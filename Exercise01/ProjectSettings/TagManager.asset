@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TutorialRequirement
   - TEST
+  - Newtag
   layers:
   - Default
   - TransparentFX
