@@ -6,7 +6,7 @@ public class ShipMove : MonoBehaviour
 {
     [SerializeField] float moveeSpeed = 5f;
     [SerializeField] float rotateSpeed = 120f;
-    bool iskey = false;
+    bool hasPackage = false;
     //SpritRenderer carRender;
     SpriteRenderer carRender;
     void Start()
@@ -42,15 +42,27 @@ public class ShipMove : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Trigger Happened");
-        Debug.Log(iskey);
-        if (other.CompareTag("Newtag"));
+        if (other.CompareTag("Package") && !hasPackage)
         {
-            iskey = true;
-            Debug.Log("You trigger with an object"+other.gameObject.name);
-            Debug.Log(iskey);
-            carRender.color = Color.beige;
+            hasPackage = true;
+
+            carRender.color = Color.yellow;
+
+            Debug.Log("Package picked up!");
+
             Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Customer") && hasPackage)
+        {
+            hasPackage = false;
+
+            carRender.color = Color.white;
+
+            SpriteRenderer customerRender = other.GetComponent<SpriteRenderer>();
+            customerRender.color = Color.green;
+
+            Debug.Log("Package delivered!");
         }
 
 

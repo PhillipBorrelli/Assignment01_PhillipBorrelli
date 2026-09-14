@@ -7,6 +7,8 @@ TagManager:
   - TutorialRequirement
   - TEST
   - Newtag
+  - Package
+  - Customer
   layers:
   - Default
   - TransparentFX
